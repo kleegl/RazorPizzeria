@@ -1,0 +1,47 @@
+﻿@page
+@model RazorRizzeria.Pages.PizzaModel
+@{
+}
+
+<div class="text-center">
+	<div class="mainText">
+		<h1 class="display-4 text-capitalize text-black">Our great selection of pizzas!</h1>
+	</div>
+	<div class="mainSubTitle">
+		<h4>Choose one, or try our Pizza Builder! Then Order and Done!</h4>
+		<h4>No one to give any of your details!</h4>
+		<h4>We already know everything!</h4>
+	</div>
+	<div class="display-6 fst-italic text-lg-end" style="color:rgb(200, 200, 200)">
+		<h4>Only one pizza per order</h4>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="coll-12 md-5 mt-5">
+				<div class="w-100 row makeYouOwnDiv">
+					<div class="col-4">
+						<img src="~/images/Pizzas/Create.png" class="w-100" />
+					</div>
+					<div class="col-8 align-items-center">
+						<div class="align-middle makeYouOwnText">
+							<h3 style="text-align: left">Create your own Pizza!</h3>
+							<p style="text-align: left">Make your own Pizza with our PizzaMaker!</p>
+							<a class="btn btn-primary mt-1" style="float: left" asp-area="" asp-page="Forms/CustomPizza">Try Now!</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			@foreach (var pizza in Model.listPizzaDB)
+			{
+				var imagePath = "~/images/Pizzas/" + (pizza.ImageTitle + ".png");
+				<div class="col-4 mb-5 pizza-img">
+					<br />
+					<a asp-area="" asp-page="Checkout/Checkout" asp-route-ImageTitle="@pizza.ImageTitle" asp-route-PizzaName="@pizza.PizzaName" asp-route-PizzaPrice="@pizza.FinalPrice">
+						<img src="@imagePath" class="w-100" asp-append-version="true" />
+					</a>
+				</div>
+			}
+		</div>
+	</div>
+</div>
