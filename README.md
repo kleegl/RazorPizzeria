@@ -8,3 +8,4 @@ A web application developed with the help of technologies:
 * C#
 * HTML
 * CSS
+* Bootstrap 5
